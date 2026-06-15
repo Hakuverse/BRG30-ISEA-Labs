@@ -116,15 +116,66 @@ Next I replace the content with my own text using `sudo nano /var/www/html/index
 Now I run a health check for my apache web server using `sudo systemctl status apache2` and firefall rules using `sudo ufw status verbose`
 <img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/cc0c04ab-f9d4-42dd-81ec-fa1514bcba6b" />
 <img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/62db66ca-0ebe-47be-9027-73a739dd88d2" />
-Now I create 3 users, alice, bob and mallory, a projectgroup group and add only alice and bob to the group, I will create a shared folder, and test alice (success) and mallory (fail) 
-<img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/014c3e5a-84d7-4dad-8262-cb81a60557a4" />
-with `ls -ld /home/shared` showing `drwxrwx---`, the directory /home/shared can only be accessed by the owner and members of the group assigned to it.
-<img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/3dd28def-e9fe-4c6f-8809-236695f132cf" />
+Now i check the listening ports to confirm Apache is on 80 and SSH is on 22 using `sudo ss -tulpn | grep -E ':(22|80|443)'` to filter out 22, 80 and 443.
+<img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/b4fa6c61-5f47-481d-9223-8d04d7d5dc9d" />
+Find my ip address to share with my powershell to test port 80 using `ip a` we get 192.168.91.129 
+<img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/ed06f1cc-c0f1-47e5-9a1f-a01a304a90d0" />
+On my windows powershell key in `ipconfig` to find my IPv4 address. 
+<img width="1115" height="628" alt="image" src="https://github.com/user-attachments/assets/d436cd9d-4f57-4e6a-b5bf-6655bed2ff1b" />
+Install nmap in my VM 
+<img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/6e880a9e-6052-4a22-8a57-a4afadc3ac60" />
+Now, I can scan my windows host from VM using `nmap (ipaddress)` 
+<img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/552e040b-f0bc-402d-a86f-fadb8c8c699c" />
+now I open apache from my VM and scan my VM's ip using windows. 
+<img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/54cb421f-46b5-47c6-adcd-24de7eef03b4" />
+Notice that Nmap output showing port 80 as open.
+<img width="1115" height="628" alt="image" src="https://github.com/user-attachments/assets/39c5e469-dce3-40b1-8085-38306385e419" />
+Now I remove apache on my VM and scan again on my Windows Powershell. 
+<img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/00b8b0eb-581b-4442-9321-0631f9cd6d06" />
+Notice that Nmap output now showing port 80 closed. 
+<img width="1115" height="628" alt="image" src="https://github.com/user-attachments/assets/7c70bf76-281c-48e7-aeda-0d9d62cfed14" />
+Next, I will create 3 users, alice, bob and mallory
+<img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/433b375e-d336-432e-8e86-4f0867c46fc9" />
+I will create a group called project group and add only alice and bob to the group, and check the groups they have.
+<img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/66caff38-ca25-4aa5-967c-c6a4c3d0302d" />
+I will now create a shared directory with 10 files, and set the ownership and permissions. 
+<img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/f34c5ef1-d3d7-4679-b02f-975919eb34a9" />
+Now i will do a test access for alice as well as mallory, (alice should success and mallory should fail). 
+<img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/296f0f72-e4e0-4b88-87e0-5fe206138184" />
+Now i will orverride bob's rights to write 
+<img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/8358b474-c242-4c57-a041-099869ff971f" />
+Next, I will open the extracter fold gutenberg and find all .txt files. 
+<img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/7a06d7b5-09a8-4102-9503-53795355fc69" />
+Now, i will use grep to search for the word 'disaster' 
+<img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/8622951a-5852-4bb1-9f02-1ff7c72bba78" />
 Next I procees to do a file search using find and grep. I used `find /etc -name "*.conf" | head -10` to find all .conf files in /etc
 <img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/7ef47102-8ba0-4b8c-afce-22ece6cd2a51" />
 and `grep -r "error" /var/log/ 2>/dev/null | head -5` to search inside files.
 <img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/55e0ac4e-bbe8-4ab8-a4ca-fefc84ae3535" />
 
+# Lab 1b reflection. 
+
+Lab 1b showed me how making Linux behave like a real server, i started by installing Apache and SSH, then securing using UFW, this taught me that running a service is easy but securing it requires deliberate firewall rules. Using nmap my VM's ports before and after removing Apache also showed me how visible every service is on a network. The permissions lab was also very eye opening. I created 3 users (alice, bob and mallory) and a shared group, then set `chmod 770` on `/home/shared`. Testing their access by switching users proved that when a user that is not in the group truly has no access. I now understand why `chmod777` is dangerous. Finally, the file search with Gutenberg archive teach me the power of the command line tools. find, grep helped me locate and find the files and texts when i needed them. Overall, lab 1b gave me confidence in securing services, managing permissions, and navigating large file systems, which is an essential skill required for any system admins. 
+
+============================================================================================
+
+# Lab 2a. TCO Analysis (Printer Comparison) 
+
+TCO means Total Cost of Ownership, which is a comprehensive financial estimate that evaluates the true, lifetime cost of an asset or service, it includes the direct expenses, the operating costs, the maintenance fee, and the hidden fees over the asset's lifespan. 
+
+I will be comparing two different type of Printers, a Budget inkjet printer vs an Entry0level monochrome laser. 
+
+Assumptions 
+1. Time period = 5 years
+2. Pages per week = 750
+3. Pages per year = 39,000 pages
+4. Total pages over 5 years = 195,000 pages
+5. Electricity cost = $0.30 per kWh
+6. Runtime per week = 40 hours 
+7. Paper cost (500 sheets) = $6.00 per ream
+8. Power consumption - inkjet (printing) = 15W
+9. Power consumption - laser (printing) = 300W
+10. Power consumption - standby (both) = 2W
 
 
 

@@ -41,4 +41,22 @@ I installed VMware Workstation Pro and downloaded the latest ubuntu iso file `ub
 <img width="1284" height="913" alt="image" src="https://github.com/user-attachments/assets/9fa7942a-ff4b-4d02-a0ef-e4f43ee8fccc" />
 <img width="1284" height="913" alt="image" src="https://github.com/user-attachments/assets/69e6a58f-d215-427d-8874-cca6a37d24b8" />
 <img width="1284" height="913" alt="image" src="https://github.com/user-attachments/assets/f20f96c6-7d4d-43d7-9f41-40f3c2419a92" />
-Once Ubuntu is successfully installed, there will be a message to Restart the system. 
+Once Ubuntu is successfully installed, there will be a message to Restart the system. After that we can navigate to the files available and open our Terminal from there. 
+<img width="1284" height="913" alt="image" src="https://github.com/user-attachments/assets/a91fdcb0-f772-4d2f-9402-096593e80206" />
+Terminal can be opened and we can move to the next step, checking and installing necessary packages. 
+<img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/768aad5c-4955-4e94-aa32-d069211a2f5d" />
+With `sudo apt install openssh-server -y` and `sudo systemctl start ssh`, we install the SSH into our system and we check if it's enabled and running by entering `sudo systemctl status ssh`. 
+Next, we move on to Ubuntu Desktop and Command Line Familiarisation. 
+First I use `firefox &` to open and check the network of FireFox browser. 
+<img width="1622" height="1077" alt="image" src="https://github.com/user-attachments/assets/8e8de9a7-4c46-42b3-93e6-b08dcc9802c0" />
+Next, I tried to open LibreOffice by using `libreoffice --writer &` and it successfully loaded. 
+<img width="1622" height="1077" alt="image" src="https://github.com/user-attachments/assets/16d05fe9-6bde-425a-8ee1-7e1f5a2c2893" />
+Then, I use `nautilus &` to open the files
+<img width="1622" height="1077" alt="image" src="https://github.com/user-attachments/assets/17e5f01a-9237-4f0b-bf77-247a25d1a259" />
+Then, I use `sudo snap install gimp` to install the GNU Image Manipulation Program
+<img width="1622" height="1077" alt="image" src="https://github.com/user-attachments/assets/e45f7b16-bfca-4818-bd1c-1193abf45715" />
+<img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/21745b3c-c70c-4654-8b53-bae6f6800658" />
+
+
+
+

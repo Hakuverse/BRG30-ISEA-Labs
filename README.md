@@ -311,6 +311,7 @@ And from here, I can set my budget alert, cost monitor, I can also check what is
 Very important again that Instance must be stopped to prevent money loss. 
 <img width="1013" height="175" alt="image" src="https://github.com/user-attachments/assets/308f3b50-84ef-4cf0-beb2-be8ad7fa776c" />
 
+Next, I will move on to the next exercise, Bash Scripting & System Automation. 
 
 
 
@@ -321,6 +322,13 @@ Very important again that Instance must be stopped to prevent money loss.
 
 
 
+# Lab 2b reflection. 
+Creating a web server using AWS EC2 is so different from running Ubuntu in my local VMware Workstation. The entire process from signing up for AWS to seeing the EC2 Apache default page from my own browser in my VMware feels like I was actually building part of the internet. The most challenging part was understanding network security. I initially forgot to open port 80 in the Security Group, so my browser timed out. After adding the HTTP rule, the page loaded successfully. Even though Ubuntu's UFW was later configured, the AWS firewall was the first line of defence. Using SSH with a key pair was another new experience. On my local VM, I just used a username and password. Here, I have to manage the .pem file and set correct permissions (chmod 400). This taught me the real-world practice of securing cloud servers, passwords are rarely used in production. Cost control was also something new to me. I set up a budget alert and made sure to stop the instance after completing the lab. This exercise made me appreciate why cloud engineers are so careful about resource lifecycle management. Overall, this lab made me understand how websites are actually hosted, how firewalls work at both the cloud and OS level, and why SSH key pairs are the industry standard for secure remote access. I feel more confident managing cloud resources and exploring other AWS services. 
+
+
+============================================================================================
+
+# Lab 3a. 
 
 
 

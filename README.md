@@ -220,9 +220,11 @@ List of Expense Items
 TCO Calculations 
 
 Epson EcoTank ET-2850 Inkjet Printer 
+
 <img width="645" height="251" alt="image" src="https://github.com/user-attachments/assets/13b38284-18a5-4f97-a2b4-b2396e57142c" />
 
 Brother HL-L2350DW Laser Printer
+
 <img width="647" height="258" alt="image" src="https://github.com/user-attachments/assets/2aa51222-8004-4258-8d85-5a107eb3ed8a" />
 
 Cost Per Page 
@@ -232,12 +234,68 @@ Inkjet - $3,681.42 / 195,000 = $0.019/page (rounded)
 Laser - $11,212.48 / 195,000 = $0.058/page (rounded)
 
 # Lab 2a reflection. 
+The Brother HL-L2350DW Laser printer has a 5-year TCO of $11,212.48 versus $3,681.42 for the Epson EcoTank ET-2850 Inkjet printer. On a per page basis, the laser printer comes in at $0.058/page compared to $0.019/page for the inkject. Based on the calculated TCO, the Epson EcoTank ET-2850 jetink printer is the more cost effective printer over 5 years at 750pages per week. Its 5 year TCO is approximately 67% lower than the laser printer.
 
+At 5 pages per week for a home user printing, the inkjet printer comes with enough ink in the box to cover all 1,300 pages, meaning the TCO is approximately $356. The laser printer at $119 would only use 1 toner cartridge and 1 drum, making its TCO around $348. The laser printer still wins on TCO. 
+
+Other qualitative factors that could influence the selection includes, Print quality, the inkjet printer produces color output while the laser printer is monochrome only. Print Speed, the laser is at 32ppm which is 3x more faster than the inkjet at around 10ppm, which matters in a busy office environment. Noise, laser printers tends to be louder during printing than inkjets. 
+
+For a large workgroup printer, I would prioritise a few points, High monthly duty cycle to handle heavy workloads without wear, High yield tonner options to minimise per page costs and reduce the changing frequency, Network connectivity for shared multiple users, Large paper capacity trays to reduce the need to refill frequently, Energy efficiency rating to save electricity and the Total cost of ownership per page. 
 
 
 ============================================================================================
 
-# Lab 2b. 
+# Lab 2b. Cloud Computing, Bash Scripting & System Automation 
+
+
+In lab 2b, I will be launching and configuring a Linux VM instance using AWS's Amazon EC2, install Apache, serve web content, and learn cloud deployment basics. Very important thing to note is that in cloud computing, forgetting to stop a VM is a huge mistake with financial consequences. 
+<img width="1629" height="830" alt="image" src="https://github.com/user-attachments/assets/12436f88-4d3c-4e8e-9ed3-5591e5921acd" />
+
+First, I navigate to the Security Group tab to create a new security group called 'ssh-and-web' to allow both SSH and HTTP traffic. 
+<img width="1636" height="773" alt="image" src="https://github.com/user-attachments/assets/7265a655-7afc-4c47-9e76-bae6d0e1bdeb" />
+<img width="1420" height="578" alt="image" src="https://github.com/user-attachments/assets/0a97e654-c92a-4c8b-8408-358865e55d9f" />
+
+Next, I create a new instance in the Amazon EC2, Name it, select Ubuntu 26.04 server, and name the keypair as Hakuverse. 
+<img width="1093" height="869" alt="image" src="https://github.com/user-attachments/assets/a39d854c-7f94-4c8f-bb8d-88cb18605f5f" />
+
+Then select the security group we have created previously 'ssh-and-web' 
+<img width="1079" height="685" alt="image" src="https://github.com/user-attachments/assets/64ff8c9c-c356-4eb3-84f9-8888225c4c1e" />
+
+Then I launch my instance and from pending state it went to running state. 
+<img width="1388" height="671" alt="image" src="https://github.com/user-attachments/assets/0cc2d30e-25b1-4332-8e48-cd1134bbd6f8" />
+
+Now I can use my VMware to connecto to the Ubtuntu VM on EC2, on my VM terminal, I first set the correct permissions `chmod 400 Hakuverse.pem` then I connect by using `ssh -i Hakuverse.pem ubuntu@13.211.234.226` 
+<img width="1434" height="1018" alt="image" src="https://github.com/user-attachments/assets/66d60906-b488-4a02-bc8c-621249a916b6" />
+
+After connected to my web server, I update the system by using `sudo apt update` and `sudo apt upgrade -y` then I install Apache Web Server by running `sudo apt install apache2 -y` 
+<img width="1434" height="1018" alt="image" src="https://github.com/user-attachments/assets/5b6933fb-109d-4770-b89c-e39e2dd7c86d" />
+
+And I start and enable Apache using `sudo systemctl start apache2` and `sudo systemctl enable apache2` and check the status of Apache by using `sudo systemctl status apache2`. 
+<img width="1434" height="1018" alt="image" src="https://github.com/user-attachments/assets/d682df8a-50b9-4d67-baee-6a53b71546f0" />
+
+From here I configure the UFW Firewall. 
+<img width="1434" height="1018" alt="image" src="https://github.com/user-attachments/assets/c350d933-a60a-4abb-b740-2aad4b9be580" />
+
+Now I test the Apache Default page by getting the Public IPv4 address from my EC2 console. 
+<img width="1389" height="186" alt="image" src="https://github.com/user-attachments/assets/111b024a-d80d-4113-b7c3-f0cd7890e034" />
+
+Open the browser and enter http://13.211.234.226, I should land on the Apache default page, this confirms that EC2 VM is running, Apache is installed and the security group allows HTTP. 
+<img width="1434" height="1018" alt="image" src="https://github.com/user-attachments/assets/37d1add8-d1c0-4a44-aade-c13c2f1737d4" />
+
+Now I will try to create custom HTML page by editing the default page using `sudo nano /var/www/html/index.html`. I changed the name to 'My AWB Ubuntu Server' and the button now shows my CT student number. 
+<img width="1434" height="1018" alt="image" src="https://github.com/user-attachments/assets/d99baf52-96ff-4a55-89d0-233e8d4b2968" />
+
+Next I will download external file with wget, I have choosen a dummy file from www.w3.org. Now I will verify the downloaded file with `ls -lh ~/` 
+<img width="1434" height="1018" alt="image" src="https://github.com/user-attachments/assets/24dbb399-8788-419d-af54-2422f13bae24" />
+
+Now I will copy the file to apache web directory and verify if the file is in the Web Root. 
+<img width="1434" height="1018" alt="image" src="https://github.com/user-attachments/assets/5a41116d-2083-4070-a8d9-d67fd2d6ff46" />
+
+Now i will test the PDF accessibility by going to the browser and type in the pdf name after my ip address.
+<img width="1434" height="1018" alt="image" src="https://github.com/user-attachments/assets/51c2b442-7da0-4b13-8706-f0a6cfa1a463" />
+
+
+
 
 
 

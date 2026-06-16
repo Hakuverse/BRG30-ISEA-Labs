@@ -163,24 +163,81 @@ Lab 1b showed me how making Linux behave like a real server, i started by instal
 
 TCO means Total Cost of Ownership, which is a comprehensive financial estimate that evaluates the true, lifetime cost of an asset or service, it includes the direct expenses, the operating costs, the maintenance fee, and the hidden fees over the asset's lifespan. 
 
-I will be comparing two different type of Printers, a Budget inkjet printer vs an Entry0level monochrome laser. 
+I will be comparing two different type of Printers, an entry-level home inkjet printer vs an Entry-level small office monochrome laser. 
+The Inkjet printer I have chosen the Epson EcoTank ET-2850, and the Laser printer I have chosen the Brother HL-L2350DW.
+For the Inkjet printer, its for personal / shared family use, the print speed is 10.5ppm for monochrome and 5ppm for colored, it consumes a refillable ink bottles with black inks at $24.99/bottle and colored inks at $16.99/bottle, the printer is priced at $349.99. 
+<img width="1114" height="459" alt="image" src="https://github.com/user-attachments/assets/1f021a8e-da7f-426f-a383-0f7bedd0934d" />
+<img width="1238" height="624" alt="image" src="https://github.com/user-attachments/assets/7c5261c3-482f-4534-9c41-46b52f556e19" />
+For the Laser printer, it's for workgroup / office use, the print speed is 32ppm and it consumes a toner cartridge and a drum at $98.29 and $129.49 respectively, the printer is priced at $119.99.
+<img width="1045" height="474" alt="image" src="https://github.com/user-attachments/assets/d8104b42-3a9f-4123-b764-442eaa9924bf" />
+<img width="849" height="167" alt="image" src="https://github.com/user-attachments/assets/87e971cb-38e1-4cc4-ac91-fd55d6e31d29" />
+<img width="834" height="153" alt="image" src="https://github.com/user-attachments/assets/72a7f6f8-8078-4612-8522-a71fee0be2e1" />
 
 Assumptions 
 1. Time period = 5 years
 2. Pages per week = 750
-3. Pages per year = 39,000 pages
-4. Total pages over 5 years = 195,000 pages
-5. Electricity cost = $0.30 per kWh
-6. Runtime per week = 40 hours 
+3. Total pages over 5 years = 195,000 pages
+4. Electricity cost = $0.30 per kWh
+5. Runtime per week = 40 hours
+6. Total hours over 5 years = 10,400 hours
 7. Paper cost (500 sheets) = $6.00 per ream
-8. Power consumption - inkjet (printing) = 15W
-9. Power consumption - laser (printing) = 300W
-10. Power consumption - standby (both) = 2W
+8. Total Paper reams 390
+9. Colour mix assumption for inkjet = 70% black and white, 30% color
+10. Colour mix assumption for laser = 100% black and white
+11. Drum Unit for Laser = 12,000 pages/drum 
+12. Power consumption - inkjet (printing) = 15W
+13. Power consumption - inkjet (standby) = 1.7W
+14. Power consumption - laser (printing) = 460W
+15. Power consumption - laser (standby) = 48W
+
+List of Expense Items 
+
+1. Epson EcoTank ET-2850 Inkjet printer
+   
+   i.Printer Unit - one time purchase
+   
+   ii. Black Ink Bottle - Refill bottles, ~7500 pages each
+   
+   iii. Colour Ink Bottles - 3 separate bottles per set, ~6000 pages each
+   
+   iv. Paper (reams of 500) - standard 80gsm copy paper, $6/ream
+   
+   v. Electricity - 15W printing, 1.7W standby @ $0.30/kWh
+   
+2. Brother HL-L2350DW Laser printer
+   
+   i. Printer Unit - one time purchase 
+
+   ii. High-Yield Toner Cartridge - 3000 pages/cartridge
+
+   iii. Drum Unit - 12,000 pages/drum
+
+   iv. Paper (reams of 500) - standard 80gsm copy paper, $6/ream
+
+   v. Electricity - 460W printing, 48W standby @ $0.30/kWh
+
+
+TCO Calculations 
+
+Epson EcoTank ET-2850 Inkjet Printer 
+<img width="645" height="251" alt="image" src="https://github.com/user-attachments/assets/13b38284-18a5-4f97-a2b4-b2396e57142c" />
+
+Brother HL-L2350DW Laser Printer
+<img width="647" height="258" alt="image" src="https://github.com/user-attachments/assets/2aa51222-8004-4258-8d85-5a107eb3ed8a" />
+
+Cost Per Page 
+
+Inkjet - $3,681.42 / 195,000 = $0.019/page (rounded)
+
+Laser - $11,212.48 / 195,000 = $0.058/page (rounded)
+
+# Lab 2a reflection. 
 
 
 
+============================================================================================
 
-
+# Lab 2b. 
 
 
 

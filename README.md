@@ -294,6 +294,30 @@ Now I will copy the file to apache web directory and verify if the file is in th
 Now i will test the PDF accessibility by going to the browser and type in the pdf name after my ip address.
 <img width="1434" height="1018" alt="image" src="https://github.com/user-attachments/assets/51c2b442-7da0-4b13-8706-f0a6cfa1a463" />
 
+I will add a hyperlink to the PDF in the HTML page now by editing in the index.html. 
+<img width="1434" height="1018" alt="image" src="https://github.com/user-attachments/assets/10afa175-16e3-4616-9f68-1f3052422928" />
+
+And with that, I have a hyperlink in my HTML page and I can click it to download the PDF
+<img width="1434" height="1018" alt="image" src="https://github.com/user-attachments/assets/238b877f-bd76-403c-9e36-20bc77811dcf" />
+<img width="1434" height="1018" alt="image" src="https://github.com/user-attachments/assets/2a2c71aa-cf88-46bc-a820-cb91b996113a" />
+
+From the AWS EC2, I can check the usage and cost of my server instance by searching Billing and Cost Management in the searchbar. 
+<img width="930" height="389" alt="image" src="https://github.com/user-attachments/assets/5de974c7-9e35-4cdd-8462-69c5bbf8f991" />
+
+And from here, I can set my budget alert, cost monitor, I can also check what is the breakdown of the cost usage directly from the AWS console. 
+<img width="1630" height="1202" alt="image" src="https://github.com/user-attachments/assets/c5e851db-ce5f-4836-a9c8-51da1aeb07f3" />
+<img width="1655" height="1201" alt="image" src="https://github.com/user-attachments/assets/0a0507b0-cd4d-4e8c-b4f0-244148e44fce" />
+
+Very important again that Instance must be stopped to prevent money loss. 
+<img width="1013" height="175" alt="image" src="https://github.com/user-attachments/assets/308f3b50-84ef-4cf0-beb2-be8ad7fa776c" />
+
+
+
+
+
+
+
+
 
 
 

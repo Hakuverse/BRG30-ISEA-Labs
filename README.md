@@ -473,7 +473,8 @@ This lab showed me how system adminstrators automate repetitive tasks. I wrote a
 
 ============================================================================================
 
-# Lab 4. 
+# Lab 4. Additional Server Service (Docker) 
+
 
 
 

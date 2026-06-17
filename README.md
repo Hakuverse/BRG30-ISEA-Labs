@@ -428,8 +428,52 @@ In this lab, we will be focusing on creating a Bash script that backs up files f
 First I copy my `Hakuverse.pem ` to my `.ssh` directory and set the correct permissions. 
 <img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/7b938a13-2b9f-428a-a33e-66caf14a7dbb" />
 
+Next I will run some basic Bash command exercises. 
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/25e7fe63-8b26-4fdb-9b19-5d5de47f4b74" />
+
+Now I will create test files and directories 
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/81f2809c-6474-48a8-b860-393e26b0787b" />
+
+Now I am going to create the basic backup script, set permission, and make it executable and test it. 
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/75681a32-3eef-4afe-8517-31ddfc6e3424" />
+
+Now all the files in my Document folder is being backed up into the backup folder. 
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/c37803fb-8f7e-4bf2-8f52-25405bc0240d" />
+
+Next, I am moving the script to /usr/bin and test running `testscript` from /tmp directly. 
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/7696e2ab-dd66-48ef-95b5-6a7c94003578" />
+
+I will now add timestamp and ZIP compression to the script and test the updated script 
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/d095ba5a-287d-4de7-9974-6895f92827c3" />
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/54a5f08e-404c-4936-b0f7-7b61fa926009" />
+
+I will now proceed to set up Cron Job and verify it and simulate multiple backups to check. 
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/e6521b03-9299-4dde-8602-6a09d1229fc6" />
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/181fd665-dc9d-4a88-8a55-a64208790983" />
+
+Now i will add SCP to export to my AWS EC2 server, before that I need to start my instance and ssh into my aws ec2 first.
+<img width="1717" height="1392" alt="image" src="https://github.com/user-attachments/assets/35ee97c2-24e6-404d-9fbd-f35da6b8bcac" />
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/6a0e8f27-f8c4-4e47-ab75-8e4dff15e0c8" />
+
+Now i will update the script with SCP and run it 
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/02a24c9c-8576-481e-beb6-dcd4e1c6bb04" />
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/00e9e261-c1ec-4069-a790-eae7eaab31f1" />
+
+Now we move back to ssh on my EC2 instance and check the file using `ls -lh ~/*.zip`. We can see the backup is on my AWS EC2 now.
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/b21a7085-69a6-43bb-9af6-e804e3af1ba1" />
+
+I will say it over and over again, once you are done with the Cloud server, please please please REMEMBER TO CLOSE/TERMINATE IT once youre done using it!!! 
+<img width="1390" height="625" alt="image" src="https://github.com/user-attachments/assets/e4d61040-2ab4-4fdf-b852-5d6734dbc296" />
+
+# Lab 3b reflection. 
+Absolute path are critical for cron because cron runs in a minimal environment with a restristed path, so it is to ensure that scripts never fails, automating this with cron ensures the backup runs every hour without human intervention too. This consistency is impossible to achieve with sys admin manually executing and is vital for production servers. 
+
+This lab showed me how system adminstrators automate repetitive tasks. I wrote a Bash script that backs up files, adds a timestamp, and compressed them into a ZIP archive. Automating this with cron was a game changer, I set the interval to run every hour, ensuring continous protection of the test files without any manual effort. I also added SCP to export the backup to the cloud, it helps in critical situations like a distant disaster recovery method. The biggest lesson was that automation isnt just about saving time, its about consistency and reliability. A cron job never forgets to run, unlike human tends to make mistakes sometimes. This lab gave me practical skills in scripting, scheduling, and secure file transfer that are essential for any sys admin or devops role. 
 
 
+============================================================================================
+
+# Lab 4. 
 
 
 

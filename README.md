@@ -508,39 +508,28 @@ View container logs
 Stop the container, start it back, check container status 
 <img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/099fb18c-b025-41a0-b106-f089962b7cb7" />
 
+Now I will connect Docer to my DuckDNS Domain, so instead of using `http://32.236.177.46:8080`, I can make my Docker container accessible via my DuckDNS domain using apache as a reverse proxy.
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/effbd134-f3da-4446-860f-d72408bff1ad" />
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/5312b9cf-c8f1-479f-ba12-298bd8072c8f" />
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/1a151de3-8d70-4f35-9bb1-f9234fb55a4d" />
+
+# Lab 3b reflection. 
+So why Docker over traditional installation? Docker packages on application with all its dependencies, libraries, and configuration files into a single container. This eliminates the whole "it works on my computer" scenario altogether. Docker also makes it easy to run multiple versions of the same application witout conflicts. 
+
+The benefits of containerization includes
+1. Isolation, each container runs its own environment with its own filesystem.
+2. Protability, contain run the same on any system with Docker installed.
+3. Resource Efficiency, containers shares the same host kernel which is lighter than virtual machines.
+4. Reproducibility, the same docker image runs the exact same way everywhere.
+
+Running on Nginx container on AWS EC2 demonstrated the DevOps workflow. I built a container, exposed it via port mapping, and even connected it to a domain using a reverse proxy. This is similar to how companies deploy microservices in production where each service runs in its own container and is independently scalable. I deployed an Nginx web server inside a Docker container, Nginx is a high-performance web server and reverse proxy widely used in production environments. Using Docker, I was able to start the server with a single command `docker run`, customise it's content by copying files into the container, and even expose it through my domain using Apache as a reverse proxy. 
+
+Deploying Docker on my AWS EC2 instance was one of the most practical exercise in this course. I installed Docker, ran an Nginx container, and had a web server running in less than 5mins, this would take way longer if I was to do it with a traditional apache installation. The `docker run` command is incredibly powerful, it downloads the image, creates container, maps ports, and starts the service automatically. Copying my own HTML file into the container showed how easy it is to customise containerised applications. I also learned that containers are isolated, my Nginx container runs independently of the system's Apache, each on different ports. Thi experience gave me confidence to explore other stuffs like MariaDB, or WordPress in the future. Docker is clearly the foundation of mordern DevOps, and understanding it is essential for any cloud or system admin role.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+This is the END of my GitHub for BRG30-ISEA-Labs 
+Thanks for Reading! 
+Signing out
+Hakuverse
+CT0390892
+============================================================================================

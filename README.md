@@ -4,25 +4,27 @@ Student ID : CT0390892
 ========================================================================
 # Introduction
 
-This reflective journal documents my hands-on learning journey through a series of practical lab activities in Linux system administration, cloud deployment, networking, security, automation, and cotainerisation. The obejctive was to move beyond the theory knowledge and gain real-world skills that are directly applicable to jobs such as system admin, DevOps engineer, or cloud consultant.
-Over the course of the bridging module, i worked through a comprehensive set of tasks organised into 4 lab activities.
+This reflective journal documents my hands-on learning journey through a series of practical lab activities in Linux system administration, cloud deployment, networking, security, automation, and containerisation using Docker. The objective was to move beyond the theory knowledge and gain real-world skills that are directly applicable to jobs such as system admin, DevOps engineer, or cloud consultant.
+Over the course of the bridging module, I worked through a comprehensive set of tasks organised into 4 major lab activities.
 
 
 Lab 1 - Linux Environment & System-Level Commands
 
-Setting up Ubuntu on VMware Workstation, learning essential command-line tools, file operations, user privilege management, network configurationm and software installations.
+Setting up Ubuntu on VMware Workstation, learning essential command-line tools, file operations, user privilege management, network configuration and software installations.
 
 Lab 2 - Services, Permissions, Cloud, and TCO 
 
 Configuring Apache2 and SSH, implementing firewall rules (UFW), managing Linux permissions and group access, performing a Total Cost of Ownership (TCO) analysis for printers, and deploying my first cloud virtual machine on AWS EC2. 
 
-Lab 3 - DNS, SSL & Domain Management 
+Lab 3 - DNS, SSL & Domain Management, Automation and Scripting 
 
 Registering a free dynamic DNS domain with DuckDNS, linking it to my EC2 instance, and securing the web server with a Let's Encrypt TLS certificate using Certbot, enabling full HTTPs with automatic renewal. 
 
-Lab 4 - Automation, Scripting and Additional Service 
+Writing a Bash backup script with timestamped archives, scheduling it with cron, 
 
-Writing a Bash backup script with timestamped archives, scheduling it with cron, and deploying a Docker container (Nginx) as an additional server service, showing mordern, repeatable deployment practices in real life situations. 
+Lab 4 - Additional Server Service 
+
+Deploying a Docker container (Nginx) as an additional server service, showing mordern, repeatable deployment practices in real life situations. 
 
 Throughout each activity, I encountered and solved real problems. From debugging Apache configuration and fixing security group rules, to troubleshooting DNS propagation and certbot challenges. These experiences reinforced the importance of systematic troubleshooting, documentation, and the value of infrastructure as code. 
 
@@ -99,10 +101,14 @@ Lastly, I did a source code compilation with gcc, checked the file permissions, 
 
 # Lab 1a reflection. 
 
-At first, when i first downloaed a virtual machine, i picked VirtualBox to setup my linux environment, but VirtualBox keeps giving me errors while setting up, it takes at least 30mins of loading and ended up giving me an Error message. I have to resolve this issue by changing to a different virtual machine, VMware Workstation, and it ran perfectly.
+At first, when I first downloaed a virtual machine, I picked VirtualBox to setup my linux environment, but VirtualBox keeps giving me errors while setting up, it takes at least 30mins of loading and ended up giving me an Error message. I have to resolve this issue by changing to a different virtual machine, VMware Workstation, and it ran perfectly.
+
 Virtual machines has a few key advantage for testing and development, first is isolation, VM runs completely in a separate environment from the host OS. If the VM crash or gets infected with malware, the host will not get affected at all. This is good for testing unstable softwares or security tools. Secondly, VM is Cost effective, Instead of getting multiple physical servers, you can run multiple VMs on one host, this costs much lesser than getting multiple physical servers. Thirdly, you can export a VM and share it with working colleagues so everyone can get the same environment and settings, eliminating the unncessary non working conditions for different machines.
-At first I only allocate 1GB of RAM to the VM and it made Ubuntu very slow and unresponsive, then i changed back to 4096 MB, and it solved the issue.
-Before this lab, I thought Linux was just one operating system, but now i learned that Linux is actually just the kernel, the core that manages the hardware, processes, and memory. Different distribution package the kernel with different software, package managers, desktop environments, and configuration to do different things. Ubtuntu was an good choice because it is beginner friendly, and widely used in cloud environments such as AWS and Azure. 
+At first I only allocate 1GB of RAM to the VM and it made Ubuntu very slow and unresponsive, then I changed back to 4096 MB, and it solved the issue.
+
+I install because `openssh-server` SSH allows secure remote access to the server without physical access, which is the standard in cloud and enterprise environments, similarily using `ufw` (Uncomplicated Firewall) provides a simplified interface to iptables, letting me define which ports are exposed and reducing the attack surface.
+
+Before this lab, I thought Linux was just one operating system, but now I learned that Linux is actually just the kernel, the core that manages the hardware, processes, and memory. Different distribution package the kernel with different software, package managers, desktop environments, and configuration to do different things. Ubtuntu was an good choice because it is beginner friendly, and widely used in cloud environments such as AWS and Azure. 
 
 ============================================================================================
 
@@ -116,7 +122,7 @@ Next I replace the content with my own text using `sudo nano /var/www/html/index
 Now I run a health check for my apache web server using `sudo systemctl status apache2` and firefall rules using `sudo ufw status verbose`
 <img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/cc0c04ab-f9d4-42dd-81ec-fa1514bcba6b" />
 <img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/62db66ca-0ebe-47be-9027-73a739dd88d2" />
-Now i check the listening ports to confirm Apache is on 80 and SSH is on 22 using `sudo ss -tulpn | grep -E ':(22|80|443)'` to filter out 22, 80 and 443.
+Now I check the listening ports to confirm Apache is on 80 and SSH is on 22 using `sudo ss -tulpn | grep -E ':(22|80|443)'` to filter out 22, 80 and 443.
 <img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/b4fa6c61-5f47-481d-9223-8d04d7d5dc9d" />
 Find my ip address to share with my powershell to test port 80 using `ip a` we get 192.168.91.129 
 <img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/ed06f1cc-c0f1-47e5-9a1f-a01a304a90d0" />
@@ -140,13 +146,13 @@ I will create a group called project group and add only alice and bob to the gro
 <img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/66caff38-ca25-4aa5-967c-c6a4c3d0302d" />
 I will now create a shared directory with 10 files, and set the ownership and permissions. 
 <img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/f34c5ef1-d3d7-4679-b02f-975919eb34a9" />
-Now i will do a test access for alice as well as mallory, (alice should success and mallory should fail). 
+Now I will do a test access for alice as well as mallory, (alice should success and mallory should fail). 
 <img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/296f0f72-e4e0-4b88-87e0-5fe206138184" />
-Now i will orverride bob's rights to write 
+Now I will orverride bob's rights to write 
 <img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/8358b474-c242-4c57-a041-099869ff971f" />
 Next, I will open the extracter fold gutenberg and find all .txt files. 
 <img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/7a06d7b5-09a8-4102-9503-53795355fc69" />
-Now, i will use grep to search for the word 'disaster' 
+Now, I will use grep to search for the word 'disaster' 
 <img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/8622951a-5852-4bb1-9f02-1ff7c72bba78" />
 Next I procees to do a file search using find and grep. I used `find /etc -name "*.conf" | head -10` to find all .conf files in /etc
 <img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/7ef47102-8ba0-4b8c-afce-22ece6cd2a51" />
@@ -155,7 +161,7 @@ and `grep -r "error" /var/log/ 2>/dev/null | head -5` to search inside files.
 
 # Lab 1b reflection. 
 
-Lab 1b showed me how making Linux behave like a real server, i started by installing Apache and SSH, then securing using UFW, this taught me that running a service is easy but securing it requires deliberate firewall rules. Using nmap my VM's ports before and after removing Apache also showed me how visible every service is on a network. The permissions lab was also very eye opening. I created 3 users (alice, bob and mallory) and a shared group, then set `chmod 770` on `/home/shared`. Testing their access by switching users proved that when a user that is not in the group truly has no access. I now understand why `chmod777` is dangerous. Finally, the file search with Gutenberg archive teach me the power of the command line tools. find, grep helped me locate and find the files and texts when i needed them. Overall, lab 1b gave me confidence in securing services, managing permissions, and navigating large file systems, which is an essential skill required for any system admins. 
+Lab 1b showed me how making Linux behave like a real server, I started by installing Apache and SSH, then securing using UFW, this taught me that running a service is easy but securing it requires deliberate firewall rules. Using nmap my VM's ports before and after removing Apache also showed me how visible every service is on a network. The permissions lab was also very eye opening. I created 3 users (alice, bob and mallory) and a shared group, then set `chmod 770` on `/home/shared`. Testing their access by switching users proved that when a user that is not in the group truly has no access. I now understand why `chmod777` is dangerous. Finally, the file search with Gutenberg archive teach me the power of the command line tools. find, grep helped me locate and find the files and texts when I needed them. Overall, lab 1b gave me confidence in securing services, managing permissions, and navigating large file systems, which is an essential skill required for any system admins. 
 
 ============================================================================================
 
@@ -194,7 +200,7 @@ List of Expense Items
 
 1. Epson EcoTank ET-2850 Inkjet printer
    
-   i.Printer Unit - one time purchase
+   I.Printer Unit - one time purchase
    
    ii. Black Ink Bottle - Refill bottles, ~7500 pages each
    
@@ -206,7 +212,7 @@ List of Expense Items
    
 2. Brother HL-L2350DW Laser printer
    
-   i. Printer Unit - one time purchase 
+   I. Printer Unit - one time purchase 
 
    ii. High-Yield Toner Cartridge - 3000 pages/cartridge
 
@@ -264,7 +270,7 @@ Then select the security group we have created previously 'ssh-and-web'
 Then I launch my instance and from pending state it went to running state. 
 <img width="1388" height="671" alt="image" src="https://github.com/user-attachments/assets/0cc2d30e-25b1-4332-8e48-cd1134bbd6f8" />
 
-Now I can use my VMware to connecto to the Ubtuntu VM on EC2, on my VM terminal, I first set the correct permissions `chmod 400 Hakuverse.pem` then I connect by using `ssh -i Hakuverse.pem ubuntu@13.211.234.226` 
+Now I can use my VMware to connecto to the Ubtuntu VM on EC2, on my VM terminal, I first set the correct permissions `chmod 400 Hakuverse.pem` then I connect by using `ssh -I Hakuverse.pem ubuntu@13.211.234.226` 
 <img width="1434" height="1018" alt="image" src="https://github.com/user-attachments/assets/66d60906-b488-4a02-bc8c-621249a916b6" />
 
 After connected to my web server, I update the system by using `sudo apt update` and `sudo apt upgrade -y` then I install Apache Web Server by running `sudo apt install apache2 -y` 
@@ -291,7 +297,7 @@ Next I will download external file with wget, I have choosen a dummy file from w
 Now I will copy the file to apache web directory and verify if the file is in the Web Root. 
 <img width="1434" height="1018" alt="image" src="https://github.com/user-attachments/assets/5a41116d-2083-4070-a8d9-d67fd2d6ff46" />
 
-Now i will test the PDF accessibility by going to the browser and type in the pdf name after my ip address.
+Now I will test the PDF accessibility by going to the browser and type in the pdf name after my ip address.
 <img width="1434" height="1018" alt="image" src="https://github.com/user-attachments/assets/51c2b442-7da0-4b13-8706-f0a6cfa1a463" />
 
 I will add a hyperlink to the PDF in the HTML page now by editing in the index.html. 
@@ -346,7 +352,7 @@ Testing the limits with number less than 0 and more than 10.
 <img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/ad19ff08-522d-4f2f-8c67-763af4526c91" />
 <img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/8abb9ec5-c72b-4344-b712-0b93bd6c757f" />
 
-the `for` loop iterates over a list of values. In my script, `for i in 5 4 3 2 1` runs the loop 5 times, with `i` taking each value in order. The `sleep 1` pauses for 1 second between each loop. The script checks for number greater than 10 using `if [ $user_number -gt 10 ]`, prints an ERROR message, and skip the system info part. The valid input can be handled better using a `while` loop to keep asking the user for a number until a valid number is entered. 
+the `for` loop iterates over a list of values. In my script, `for I in 5 4 3 2 1` runs the loop 5 times, with `I` taking each value in order. The `sleep 1` pauses for 1 second between each loop. The script checks for number greater than 10 using `if [ $user_number -gt 10 ]`, prints an ERROR message, and skip the system info part. The valid input can be handled better using a `while` loop to keep asking the user for a number until a valid number is entered. 
 
 Now I will do a system monitoring script, which includes a number of cycles to run, at a set interval. 
 <img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/3719d626-f6cd-4de7-bf71-294e20447807" />
@@ -364,7 +370,7 @@ Bash scripting for system automation taught me that scripts can turn a series of
 
 # Lab 3a. DNS setup and SSL configuration. 
 
-In this lab, I will be using DuckDNS to register a domain name for my AWS EC2 Ubuntu server, configure apache, and securing my site with Let's Encrypt SSL/TLS certificate using Certbot. I already have an AWS EC2 instance running, apache 2 installed and working as well as a security group that allows SSH(port 22), HTTP(port 80), and HTTPS(port 443). 
+In this lab, I will be using DuckDNS to register a domain name for my AWS EC2 Ubuntu server, configure apache, and securing my site with Let's Encrypt SSL/TLS certificate using Certbot. I already have an AWS EC2 instance running, apache 2 installed and working as well as a security group that allows SSH(port 22), HTTP(port 80), and HTTPS(port 443). DuckDNS provides free dynamic DNS records, allowing me to map a hostname to my EC2's public IP without purchasing a domain.
 
 First I go to DuckDNS.org to get a free domain and name it hakuverse. 
 <img width="1347" height="1006" alt="image" src="https://github.com/user-attachments/assets/dae5748e-14c6-4b8f-ac39-55fd175c1d2b" />
@@ -451,11 +457,11 @@ I will now proceed to set up Cron Job and verify it and simulate multiple backup
 <img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/e6521b03-9299-4dde-8602-6a09d1229fc6" />
 <img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/181fd665-dc9d-4a88-8a55-a64208790983" />
 
-Now i will add SCP to export to my AWS EC2 server, before that I need to start my instance and ssh into my aws ec2 first.
+Now I will add SCP to export to my AWS EC2 server, before that I need to start my instance and ssh into my aws ec2 first.
 <img width="1717" height="1392" alt="image" src="https://github.com/user-attachments/assets/35ee97c2-24e6-404d-9fbd-f35da6b8bcac" />
 <img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/6a0e8f27-f8c4-4e47-ab75-8e4dff15e0c8" />
 
-Now i will update the script with SCP and run it 
+Now I will update the script with SCP and run it 
 <img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/02a24c9c-8576-481e-beb6-dcd4e1c6bb04" />
 <img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/00e9e261-c1ec-4069-a790-eae7eaab31f1" />
 
@@ -496,7 +502,7 @@ I forgot to add in port 8080 in my AWS EC2 and it shows unable to connect, after
 <img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/eb243311-e674-4a4c-9ed6-a5bdc5ba5d99" />
 <img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/aebbb2b2-17dd-4b5e-b8fc-f1327b20eb9c" />
 
-Now i will customer the container with my own HTML page. 
+Now I will customer the container with my own HTML page. 
 <img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/ef6dcb5f-bbef-41d1-b89b-d53df1bb38e0" />
 <img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/5209dec1-d4d3-4b4d-9abe-efde2beb5800" />
 

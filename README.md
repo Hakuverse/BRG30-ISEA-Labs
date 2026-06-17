@@ -407,6 +407,28 @@ Now it is time to stop my EC2 instance after finishing this lab to save money. I
 <img width="1426" height="237" alt="image" src="https://github.com/user-attachments/assets/28228724-2b9f-4ff3-b809-2486422b86ea" />
 <img width="697" height="108" alt="image" src="https://github.com/user-attachments/assets/76773db7-7914-4fc6-a50e-b713899f7e16" />
 
+# Lab 3a reflection. 
+DNS (Domain Name System) translates human readable domain names like `hakuverse.duckdns.org` into machine readable IP addresses. Without DNS, users would need to remember and type the IP address to visit websites. 
+
+DNS propagation takes time because DNS records are cached by many servers around the world. When record is updated, it takes time for the cache to expire and refresh with new information. This process can take minutes or hours, depending on the settings. 
+
+Let's Encrypt uses the ACME protocol. Certbot creates a temporary verification file on my server at a specific URL. Let's Encrypt then tried to access that file via HTTP. If it can access, it confirms that I have the control over my domain and issues the certificate to me. 
+
+If a certificate expires and is not renewed, serious problems could occur, which includes browser warnings, like "your connection is not private" security warnings, or a loss of trust, when the padlock icon disappears and replaced with a 'not secure' message. It could also lead to data exposure as the traffic between the user and the server becomes unencrypted, so sensitive data like passwords or personal information can be intercepted and read by attackers.
+
+The risks if TLS is not configured on a public-facing site includes, 1. All data (passwords, personal info, etc) is sent in plain text and can be intercepted. 2. Users cannot verify that they are connecting to the real site which is vulnerable to phishing. 3. Browsers will show "Not Secure" warning messages, reducing user trust in the website. 
+
+If I leave my cloud VM running for month, I will incur a huge costs as it is a pay-per-use server, also it could lead to security risks that an unattended cloud VM might be compromised. 
+
+============================================================================================
+
+# Lab 3b. Bash Backup Scripting, Cron Jobs & Cloud Export 
+In this lab, we will be focusing on creating a Bash script that backs up files from `~/Documents` to `~/backup`, compress the backup with a timestamp, transfers it to my AWS EC2 cloud server via SCP and it runs automatically every hour using cron. 
+
+First I copy my `Hakuverse.pem ` to my `.ssh` directory and set the correct permissions. 
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/7b938a13-2b9f-428a-a33e-66caf14a7dbb" />
+
+
 
 
 

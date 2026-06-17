@@ -101,14 +101,14 @@ Lastly, I did a source code compilation with gcc, checked the file permissions, 
 
 # Lab 1a reflection. 
 
-At first, when I first downloaed a virtual machine, I picked VirtualBox to setup my linux environment, but VirtualBox keeps giving me errors while setting up, it takes at least 30mins of loading and ended up giving me an Error message. I have to resolve this issue by changing to a different virtual machine, VMware Workstation, and it ran perfectly.
+At first, when I was downloading a virtual machine, I picked VirtualBox to setup my Linux environment, but VirtualBox keeps giving me errors while setting up, it takes at least 30mins of loading and ended up giving me an Error message. I have to resolve this issue by changing to a different virtual machine, VMware Workstation, and it ran perfectly.
 
-Virtual machines has a few key advantage for testing and development, first is isolation, VM runs completely in a separate environment from the host OS. If the VM crash or gets infected with malware, the host will not get affected at all. This is good for testing unstable softwares or security tools. Secondly, VM is Cost effective, Instead of getting multiple physical servers, you can run multiple VMs on one host, this costs much lesser than getting multiple physical servers. Thirdly, you can export a VM and share it with working colleagues so everyone can get the same environment and settings, eliminating the unncessary non working conditions for different machines.
-At first I only allocate 1GB of RAM to the VM and it made Ubuntu very slow and unresponsive, then I changed back to 4096 MB, and it solved the issue.
+Virtual machines have a few key advantages for testing and development, first is isolation, VM runs completely in a separate environment from the host OS. If the VM crash or gets infected with malware, the host will not get affected at all. This is good for testing unstable software or security tools. Secondly, VM is Cost effective, instead of getting multiple physical servers, you can run multiple VMs on one host, this costs much lesser than getting multiple physical servers. Thirdly, you can export a VM and share it with working colleagues so everyone can get the same environment and settings, eliminating the unnecessary non-working conditions for different machines.
+At first, I only allocate 1GB of RAM to the VM and it made Ubuntu very slow and unresponsive, then I changed back to 4096 MB, and it solved the issue.
 
-I install because `openssh-server` SSH allows secure remote access to the server without physical access, which is the standard in cloud and enterprise environments, similarily using `ufw` (Uncomplicated Firewall) provides a simplified interface to iptables, letting me define which ports are exposed and reducing the attack surface.
+I install because `openssh-server` SSH allows secure remote access to the server without physical access, which is the standard in cloud and enterprise environments, similarly using `ufw` (Uncomplicated Firewall) provides a simplified interface to iptables, letting me define which ports are exposed and reducing the attack surface.
 
-Before this lab, I thought Linux was just one operating system, but now I learned that Linux is actually just the kernel, the core that manages the hardware, processes, and memory. Different distribution package the kernel with different software, package managers, desktop environments, and configuration to do different things. Ubtuntu was an good choice because it is beginner friendly, and widely used in cloud environments such as AWS and Azure. 
+Before this lab, I thought Linux was just one operating system, but now I learned that Linux is actually just the kernel, the core that manages the hardware, processes, and memory. Different distribution package the kernel with different software, package managers, desktop environments, and configuration to do different things. Ubtuntu was a good choice because it is beginner friendly, and widely used in cloud environments such as AWS and Azure. 
 
 ============================================================================================
 
@@ -150,20 +150,20 @@ I will now create a shared directory with 10 files, and set the ownership and pe
 <img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/f34c5ef1-d3d7-4679-b02f-975919eb34a9" />
 Now I will do a test access for alice as well as mallory, (alice should success and mallory should fail). 
 <img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/296f0f72-e4e0-4b88-87e0-5fe206138184" />
-Now I will orverride bob's rights to write 
+Now I will override bob's rights to write 
 <img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/8358b474-c242-4c57-a041-099869ff971f" />
-Next, I will open the extracter fold gutenberg and find all .txt files. 
+Next, I will open the extracted file gutenberg and find all .txt files. 
 <img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/7a06d7b5-09a8-4102-9503-53795355fc69" />
 Now, I will use grep to search for the word 'disaster' 
 <img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/8622951a-5852-4bb1-9f02-1ff7c72bba78" />
-Next I procees to do a file search using find and grep. I used `find /etc -name "*.conf" | head -10` to find all .conf files in /etc
+Next I proceed to do a file search using find and grep. I used `find /etc -name "*.conf" | head -10` to find all .conf files in /etc
 <img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/7ef47102-8ba0-4b8c-afce-22ece6cd2a51" />
 and `grep -r "error" /var/log/ 2>/dev/null | head -5` to search inside files.
 <img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/55e0ac4e-bbe8-4ab8-a4ca-fefc84ae3535" />
 
 # Lab 1b reflection. 
 
-Lab 1b showed me how making Linux behave like a real server, I started by installing Apache and SSH, then securing using UFW, this taught me that running a service is easy but securing it requires deliberate firewall rules. Using nmap my VM's ports before and after removing Apache also showed me how visible every service is on a network. The permissions lab was also very eye opening. I created 3 users (alice, bob and mallory) and a shared group, then set `chmod 770` on `/home/shared`. Testing their access by switching users proved that when a user that is not in the group truly has no access. I now understand why `chmod777` is dangerous. Finally, the file search with Gutenberg archive teach me the power of the command line tools. find, grep helped me locate and find the files and texts when I needed them. Overall, lab 1b gave me confidence in securing services, managing permissions, and navigating large file systems, which is an essential skill required for any system admins. 
+Lab 1b showed me how making Linux behave like a real server, I started by installing Apache and SSH, then securing using UFW, this taught me that running a service is easy but securing it requires deliberate firewall rules. Using nmap my VM's ports before and after removing Apache also showed me how visible every service is on a network. The permissions lab was also very eye opening. I created 3 users (alice, bob and mallory) and a shared group, then set `chmod 770` on `/home/shared`. Testing their access by switching users proved that when a user that is not in the group truly has no access. I now understand why `chmod777` is dangerous. Finally, the file search with Gutenberg archive teaches me the power of the command line tools. find, grep helped me locate and find the files and texts when I needed them. Overall, lab 1b gave me confidence in securing services, managing permissions, and navigating large file systems, which is an essential skill required for any system admins. 
 
 ============================================================================================
 
@@ -171,7 +171,7 @@ Lab 1b showed me how making Linux behave like a real server, I started by instal
 
 TCO means Total Cost of Ownership, which is a comprehensive financial estimate that evaluates the true, lifetime cost of an asset or service, it includes the direct expenses, the operating costs, the maintenance fee, and the hidden fees over the asset's lifespan. 
 
-I will be comparing two different type of Printers, an entry-level home inkjet printer vs an Entry-level small office monochrome laser. 
+I will be comparing two different types of Printers, an entry-level home inkjet printer vs an Entry-level small office monochrome laser. 
 The Inkjet printer I have chosen the Epson EcoTank ET-2850, and the Laser printer I have chosen the Brother HL-L2350DW.
 For the Inkjet printer, its for personal / shared family use, the print speed is 10.5ppm for monochrome and 5ppm for colored, it consumes a refillable ink bottles with black inks at $24.99/bottle and colored inks at $16.99/bottle, the printer is priced at $349.99. 
 <img width="1114" height="459" alt="image" src="https://github.com/user-attachments/assets/1f021a8e-da7f-426f-a383-0f7bedd0934d" />
@@ -190,8 +190,8 @@ Assumptions
 6. Total hours over 5 years = 10,400 hours
 7. Paper cost (500 sheets) = $6.00 per ream
 8. Total Paper reams 390
-9. Colour mix assumption for inkjet = 70% black and white, 30% color
-10. Colour mix assumption for laser = 100% black and white
+9. Color mix assumption for inkjet = 70% black and white, 30% color
+10. Color mix assumption for laser = 100% black and white
 11. Drum Unit for Laser = 12,000 pages/drum 
 12. Power consumption - inkjet (printing) = 15W
 13. Power consumption - inkjet (standby) = 1.7W
@@ -202,11 +202,11 @@ List of Expense Items
 
 1. Epson EcoTank ET-2850 Inkjet printer
    
-   I.Printer Unit - one time purchase
+   i. Printer Unit - one time purchase
    
    ii. Black Ink Bottle - Refill bottles, ~7500 pages each
    
-   iii. Colour Ink Bottles - 3 separate bottles per set, ~6000 pages each
+   iii. Color Ink Bottles - 3 separate bottles per set, ~6000 pages each
    
    iv. Paper (reams of 500) - standard 80gsm copy paper, $6/ream
    
@@ -248,7 +248,7 @@ At 5 pages per week for a home user printing, the inkjet printer comes with enou
 
 Other qualitative factors that could influence the selection includes, Print quality, the inkjet printer produces color output while the laser printer is monochrome only. Print Speed, the laser is at 32ppm which is 3x more faster than the inkjet at around 10ppm, which matters in a busy office environment. Noise, laser printers tends to be louder during printing than inkjets. 
 
-For a large workgroup printer, I would prioritise a few points, High monthly duty cycle to handle heavy workloads without wear, High yield tonner options to minimise per page costs and reduce the changing frequency, Network connectivity for shared multiple users, Large paper capacity trays to reduce the need to refill frequently, Energy efficiency rating to save electricity and the Total cost of ownership per page. 
+For a large workgroup printer, I would prioritize a few points, High monthly duty cycle to handle heavy workloads without wear, High yield tonner options to minimize per page costs and reduce the changing frequency, Network connectivity for shared multiple users, Large paper capacity trays to reduce the need to refill frequently, Energy efficiency rating to save electricity and the Total cost of ownership per page. 
 
 
 ============================================================================================
@@ -272,7 +272,7 @@ Then select the security group we have created previously 'ssh-and-web'
 Then I launch my instance and from pending state it went to running state. 
 <img width="1388" height="671" alt="image" src="https://github.com/user-attachments/assets/0cc2d30e-25b1-4332-8e48-cd1134bbd6f8" />
 
-Now I can use my VMware to connecto to the Ubtuntu VM on EC2, on my VM terminal, I first set the correct permissions `chmod 400 Hakuverse.pem` then I connect by using `ssh -I Hakuverse.pem ubuntu@13.211.234.226` 
+Now I can use my VMware to connect to the Ubtuntu VM on EC2, on my VM terminal, I first set the correct permissions `chmod 400 Hakuverse.pem` then I connect by using `ssh -I Hakuverse.pem ubuntu@13.211.234.226` 
 <img width="1434" height="1018" alt="image" src="https://github.com/user-attachments/assets/66d60906-b488-4a02-bc8c-621249a916b6" />
 
 After connected to my web server, I update the system by using `sudo apt update` and `sudo apt upgrade -y` then I install Apache Web Server by running `sudo apt install apache2 -y` 
@@ -309,7 +309,7 @@ And with that, I have a hyperlink in my HTML page and I can click it to download
 <img width="1434" height="1018" alt="image" src="https://github.com/user-attachments/assets/238b877f-bd76-403c-9e36-20bc77811dcf" />
 <img width="1434" height="1018" alt="image" src="https://github.com/user-attachments/assets/2a2c71aa-cf88-46bc-a820-cb91b996113a" />
 
-From the AWS EC2, I can check the usage and cost of my server instance by searching Billing and Cost Management in the searchbar. 
+From the AWS EC2, I can check the usage and cost of my server instance by searching Billing and Cost Management in the search bar. 
 <img width="930" height="389" alt="image" src="https://github.com/user-attachments/assets/5de974c7-9e35-4cdd-8462-69c5bbf8f991" />
 
 And from here, I can set my budget alert, cost monitor, I can also check what is the breakdown of the cost usage directly from the AWS console. 
@@ -346,7 +346,7 @@ Now I will move on to create and run a Bash Script. I will first create the scri
 
 `chmod777` is used to set the permission so that the file can be read, write, and executed, allowing the system to run it as a program, without this, you cannot execute the script with `./hello_world.sh`. The `#!/bin/bash` tells the system which interpreter to use to run the script. `/bin/bash` means use the Bash shell. Without it, the system may try to run the script with a different shell, causing errors.
 
-Now I will do a loop and conditional script, I will first create the script, make it executable and run it, the program will capture user input from 1 to 10 and validates it, if conditions are correct, it will show the system info, if a value outside of 1 to 10 is caputred, it will return an error. 
+Now I will do a loop and conditional script, I will first create the script, make it executable and run it, the program will capture user input from 1 to 10 and validates it, if conditions are correct, it will show the system info, if a value outside of 1 to 10 is captured, it will return an error. 
 <img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/e090ef3c-2b7b-4a34-a786-2e2eb3375ead" />
 
 Testing the limits with number less than 0 and more than 10. 
@@ -364,7 +364,7 @@ Now I will do a system monitoring script, which includes a number of cycles to r
 The `free -h` shows system memory usage in human readable format, it displays total, used, free, shared, buff/cache, and available memory. I could add in commands like `netstat -i` to show network interface statistics or `ss -tulpn` to show listening ports, I could also add in `ping -c 4 google.com` to check connectivity and latency. Automations like this saves time, reduces human error and ensures tasks are performed consistently. Instead of manually typing the commands every hour to check, an admin can just schedule a script with `cron` to run automatically and alert them if there's any issues. This is critical for monitoring 24/7 for production servers. 
 
 # Lab 2b reflection. 
-Creating a web server using AWS EC2 is so different from running Ubuntu in my local VMware Workstation. The entire process from signing up for AWS to seeing the EC2 Apache default page from my own browser in my VMware feels like I was actually building part of the internet. The most challenging part was understanding network security. I initially forgot to open port 80 in the Security Group, so my browser timed out. After adding the HTTP rule, the page loaded successfully. Even though Ubuntu's UFW was later configured, the AWS firewall was the first line of defence. Using SSH with a key pair was another new experience. On my local VM, I just used a username and password. Here, I have to manage the .pem file and set correct permissions (chmod 400). This taught me the real-world practice of securing cloud servers, passwords are rarely used in production. Cost control was also something new to me. I set up a budget alert and made sure to stop the instance after completing the lab. This exercise made me appreciate why cloud engineers are so careful about resource lifecycle management. Overall, this lab made me understand how websites are actually hosted, how firewalls work at both the cloud and OS level, and why SSH key pairs are the industry standard for secure remote access. I feel more confident managing cloud resources and exploring other AWS services. 
+Creating a web server using AWS EC2 is so different from running Ubuntu in my local VMware Workstation. The entire process from signing up for AWS to seeing the EC2 Apache default page from my own browser in my VMware feels like I was actually building part of the internet. The most challenging part was understanding network security. I initially forgot to open port 80 in the Security Group, so my browser timed out. After adding the HTTP rule, the page loaded successfully. Even though Ubuntu's UFW was later configured, the AWS firewall was the first line of defense. Using SSH with a key pair was another new experience. On my local VM, I just used a username and password. Here, I have to manage the .pem file and set correct permissions (chmod 400). This taught me the real-world practice of securing cloud servers, passwords are rarely used in production. Cost control was also something new to me. I set up a budget alert and made sure to stop the instance after completing the lab. This exercise made me appreciate why cloud engineers are so careful about resource lifecycle management. Overall, this lab made me understand how websites are actually hosted, how firewalls work at both the cloud and OS level, and why SSH key pairs are the industry standard for secure remote access. I feel more confident managing cloud resources and exploring other AWS services. 
 
 Bash scripting for system automation taught me that scripts can turn a series of long manual commands into a single executable file, saving both time and effort, and reducing errors. The `for` loop and `if-elif-else` conditions gave me control over how to script flows, I could add in count downs, validating user inputs, and display different outputs based on the conditions set. The resource monitor script showed how adminds can automate checks for memory, disk, and processes, which is essential for maintaining servers. I also learned about file permissions, without `chmod 777`, scripts wont be able to run. This experience has made me realise that automation is not just a convenience but a fundamental skill for any system admin. 
 
@@ -470,13 +470,13 @@ Now I will update the script with SCP and run it
 Now we move back to ssh on my EC2 instance and check the file using `ls -lh ~/*.zip`. We can see the backup is on my AWS EC2 now.
 <img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/b21a7085-69a6-43bb-9af6-e804e3af1ba1" />
 
-I will say it over and over again, once you are done with the Cloud server, please please please REMEMBER TO CLOSE/TERMINATE IT once youre done using it!!! 
+I will say it over and over again, once you are done with the Cloud server, please please please REMEMBER TO CLOSE/TERMINATE IT once you're done using it!!! 
 <img width="1390" height="625" alt="image" src="https://github.com/user-attachments/assets/e4d61040-2ab4-4fdf-b852-5d6734dbc296" />
 
 # Lab 3b reflection. 
-Absolute path are critical for cron because cron runs in a minimal environment with a restristed path, so it is to ensure that scripts never fails, automating this with cron ensures the backup runs every hour without human intervention too. This consistency is impossible to achieve with sys admin manually executing and is vital for production servers. 
+Absolute path are critical for cron because cron runs in a minimal environment with a restricted path, so it is to ensure that scripts never fails, automating this with cron ensures the backup runs every hour without human intervention too. This consistency is impossible to achieve with sys admin manually executing and is vital for production servers. 
 
-This lab showed me how system adminstrators automate repetitive tasks. I wrote a Bash script that backs up files, adds a timestamp, and compressed them into a ZIP archive. Automating this with cron was a game changer, I set the interval to run every hour, ensuring continous protection of the test files without any manual effort. I also added SCP to export the backup to the cloud, it helps in critical situations like a distant disaster recovery method. The biggest lesson was that automation isnt just about saving time, its about consistency and reliability. A cron job never forgets to run, unlike human tends to make mistakes sometimes. This lab gave me practical skills in scripting, scheduling, and secure file transfer that are essential for any sys admin or devops role. 
+This lab showed me how system administrators automate repetitive tasks. I wrote a Bash script that backs up files, adds a timestamp, and compressed them into a ZIP archive. Automating this with cron was a game changer, I set the interval to run every hour, ensuring continuous protection of the test files without any manual effort. I also added SCP to export the backup to the cloud, it helps in critical situations like a distant disaster recovery method. The biggest lesson was that automation isn't just about saving time, its about consistency and reliability. A cron job never forgets to run, unlike human tends to make mistakes sometimes. This lab gave me practical skills in scripting, scheduling, and secure file transfer that are essential for any system admin or DevOps role. 
 
 
 ============================================================================================
@@ -488,14 +488,14 @@ First I will need to start my AWS EC2 instance and access it thru my local VMwar
 <img width="1397" height="663" alt="image" src="https://github.com/user-attachments/assets/d5f0f14f-c3cc-4c27-9691-97d7aacd1e3c" />
 <img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/6e87384a-1253-4413-aa98-2faed095b5ab" />
 
-Then I'll update systen and install, start and enable Docker. I will also verify it and test out by using `sudo docker run hello-world`
+Then I'll update system and install, start and enable Docker. I will also verify it and test out by using `sudo docker run hello-world`
 <img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/591b3cc0-2012-4ebe-b053-04f4e9b953ef" />
 <img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/7e9c011b-c8ef-43ab-9c9d-475b13ae695f" />
 
-Now I will allow non-root docker usage to avoid typing sudo everytime.
+Now I will allow non-root docker usage to avoid typing sudo every time.
 <img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/8180816d-ada7-46ab-9b93-aaefa4cc9639" />
 
-Now I will run my first container (Nginx web server) and verify if the contain is running.
+Now I will run my first container (Nginx web server) and verify if the container is running.
 <img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/73c2f197-a0fa-4e36-88a4-e771d3b8c7e8" />
 
 Then I test the Nginx container locally with curl and in browser using `http://32.236.177.46:8080` 
@@ -504,7 +504,7 @@ I forgot to add in port 8080 in my AWS EC2 and it shows unable to connect, after
 <img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/eb243311-e674-4a4c-9ed6-a5bdc5ba5d99" />
 <img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/aebbb2b2-17dd-4b5e-b8fc-f1327b20eb9c" />
 
-Now I will customer the container with my own HTML page. 
+Now I will customize the container with my own HTML page. 
 <img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/ef6dcb5f-bbef-41d1-b89b-d53df1bb38e0" />
 <img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/5209dec1-d4d3-4b4d-9abe-efde2beb5800" />
 
@@ -516,28 +516,33 @@ View container logs
 Stop the container, start it back, check container status 
 <img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/099fb18c-b025-41a0-b106-f089962b7cb7" />
 
-Now I will connect Docer to my DuckDNS Domain, so instead of using `http://32.236.177.46:8080`, I can make my Docker container accessible via my DuckDNS domain using apache as a reverse proxy.
+Now I will connect Docker to my DuckDNS Domain, so instead of using `http://32.236.177.46:8080`, I can make my Docker container accessible via my DuckDNS domain using apache as a reverse proxy.
 <img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/effbd134-f3da-4446-860f-d72408bff1ad" />
 <img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/5312b9cf-c8f1-479f-ba12-298bd8072c8f" />
 <img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/1a151de3-8d70-4f35-9bb1-f9234fb55a4d" />
 
-# Lab 3b reflection. 
-So why Docker over traditional installation? Docker packages on application with all its dependencies, libraries, and configuration files into a single container. This eliminates the whole "it works on my computer" scenario altogether. Docker also makes it easy to run multiple versions of the same application witout conflicts. 
+# Lab 4 reflection. 
+So why Docker over traditional installation? Docker packages on application with all its dependencies, libraries, and configuration files into a single container. This eliminates the whole "it works on my computer" scenario altogether. Docker also makes it easy to run multiple versions of the same application without conflicts. 
 
 The benefits of containerization includes
 1. Isolation, each container runs its own environment with its own filesystem.
-2. Protability, contain run the same on any system with Docker installed.
+2. Portability, contain run the same on any system with Docker installed.
 3. Resource Efficiency, containers shares the same host kernel which is lighter than virtual machines.
 4. Reproducibility, the same docker image runs the exact same way everywhere.
 
-Running on Nginx container on AWS EC2 demonstrated the DevOps workflow. I built a container, exposed it via port mapping, and even connected it to a domain using a reverse proxy. This is similar to how companies deploy microservices in production where each service runs in its own container and is independently scalable. I deployed an Nginx web server inside a Docker container, Nginx is a high-performance web server and reverse proxy widely used in production environments. Using Docker, I was able to start the server with a single command `docker run`, customise it's content by copying files into the container, and even expose it through my domain using Apache as a reverse proxy. 
+Running on Nginx container on AWS EC2 demonstrated the DevOps workflow. I built a container, exposed it via port mapping, and even connected it to a domain using a reverse proxy. This is similar to how companies deploy microservices in production where each service runs in its own container and is independently scalable. I deployed an Nginx web server inside a Docker container, Nginx is a high-performance web server and reverse proxy widely used in production environments. Using Docker, I was able to start the server with a single command `docker run`, customize it's content by copying files into the container, and even expose it through my domain using Apache as a reverse proxy. 
 
-Deploying Docker on my AWS EC2 instance was one of the most practical exercise in this course. I installed Docker, ran an Nginx container, and had a web server running in less than 5mins, this would take way longer if I was to do it with a traditional apache installation. The `docker run` command is incredibly powerful, it downloads the image, creates container, maps ports, and starts the service automatically. Copying my own HTML file into the container showed how easy it is to customise containerised applications. I also learned that containers are isolated, my Nginx container runs independently of the system's Apache, each on different ports. Thi experience gave me confidence to explore other stuffs like MariaDB, or WordPress in the future. Docker is clearly the foundation of mordern DevOps, and understanding it is essential for any cloud or system admin role.
+Deploying Docker on my AWS EC2 instance was one of the most practical exercise in this course. I installed Docker, ran an Nginx container, and had a web server running in less than 5mins, this would take way longer if I was to do it with a traditional apache installation. The `docker run` command is incredibly powerful, it downloads the image, creates container, maps ports, and starts the service automatically. Copying my own HTML file into the container showed how easy it is to customize containerized applications. I also learned that containers are isolated, my Nginx container runs independently of the system's Apache, each on different ports. This experience gave me confidence to explore other stuffs like MariaDB, or WordPress in the future. Docker is clearly the foundation of modern DevOps, and understanding it is essential for any cloud or system admin role.
 
 
 This is the END of my GitHub for BRG30-ISEA-Labs 
+
 Thanks for Reading! 
+
 Signing out
+
 Hakuverse
+
 CT0390892
+
 ============================================================================================

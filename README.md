@@ -117,6 +117,8 @@ Before this lab, I thought Linux was just one operating system, but now I learne
 First I install the Apache Web Server using `sudo apt install apache2 -y` and test it using firefox browser with `http://127.0.0.1` 
 <img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/54b500da-32cc-41c9-b510-bc1781a07f90" />
 <img width="1622" height="1077" alt="image" src="https://github.com/user-attachments/assets/d7c673f4-f653-46ad-9e70-43f8d8f6dcf7" />
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/955e9537-5bdb-4cdf-9fbf-e5948a984c1d" />
+
 Next I replace the content with my own text using `sudo nano /var/www/html/index.html` 
 <img width="1546" height="1077" alt="image" src="https://github.com/user-attachments/assets/9a07dacc-828e-4d88-92b7-ae660749ca37" />
 Now I run a health check for my apache web server using `sudo systemctl status apache2` and firefall rules using `sudo ufw status verbose`

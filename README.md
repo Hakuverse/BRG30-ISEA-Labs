@@ -307,28 +307,126 @@ From the AWS EC2, I can check the usage and cost of my server instance by search
 And from here, I can set my budget alert, cost monitor, I can also check what is the breakdown of the cost usage directly from the AWS console. 
 <img width="1630" height="1202" alt="image" src="https://github.com/user-attachments/assets/c5e851db-ce5f-4836-a9c8-51da1aeb07f3" />
 <img width="1655" height="1201" alt="image" src="https://github.com/user-attachments/assets/0a0507b0-cd4d-4e8c-b4f0-244148e44fce" />
+<img width="1354" height="583" alt="image" src="https://github.com/user-attachments/assets/1f85c784-fa58-45a7-8067-0383010208b2" />
 
 Very important again that Instance must be stopped to prevent money loss. 
 <img width="1013" height="175" alt="image" src="https://github.com/user-attachments/assets/308f3b50-84ef-4cf0-beb2-be8ad7fa776c" />
 
-Next, I will move on to the next exercise, Bash Scripting & System Automation. 
+Next, I will move on to the next exercise, Bash Scripting & System Automation. I will first create a working directory, then create files using different methods like `touch`, `echo`, and `cat`. then I will view the file contents without the GUI by using `cat`, `less`, `head`, and `tail`. 
+<img width="1434" height="1018" alt="image" src="https://github.com/user-attachments/assets/9459629e-a1d6-420e-a378-1bd15b2faa19" />
+<img width="1434" height="1018" alt="image" src="https://github.com/user-attachments/assets/a61b01f6-fb1f-47a2-96ee-63d107a6fe44" />
+<img width="1434" height="1018" alt="image" src="https://github.com/user-attachments/assets/57ab9ebc-0ae9-4bdd-944e-72ac3b5eb26b" />
+Using head shows the first 10 lines by default and using tail shows the last 10 lines. 
+<img width="1434" height="1018" alt="image" src="https://github.com/user-attachments/assets/18302ca6-ac30-464f-9000-63be63d71e4e" />
 
+Now I will copy, move, rename, and delete files. 
+<img width="1434" height="1018" alt="image" src="https://github.com/user-attachments/assets/1a96a4a1-9832-4e3b-8543-37d33ad6a251" />
 
+Then I will create a directory and copy files into it
+<img width="1434" height="1018" alt="image" src="https://github.com/user-attachments/assets/ba40b0a2-c7ed-4136-8d24-53455287efe3" />
 
+`mkdir LabFiles` used to create a new directory, it created a new empty directory called LabFiles.
 
+You can use `cat` (to print everything), `less` (to scroll through), `head` (first few lines), or `last` (last few lines). 
 
+the difference between `cp` and `mv`, `cp` copies a file, the original file remains and a duplicate is created at the destination while `mv` moves or renames a file, the original file is removed from the old location and placed at the new location. 
 
+Now I will move on to create and run a Bash Script. I will first create the script file, then add the shebang and script content followed by making it executable and run the script. 
+<img width="1434" height="1018" alt="image" src="https://github.com/user-attachments/assets/40465d48-89a2-49b0-b8eb-76d7f6c00cb1" />
+<img width="1434" height="1018" alt="image" src="https://github.com/user-attachments/assets/9505b0a8-0ef7-4be0-a94d-31e865caf5d3" />
+<img width="1434" height="1018" alt="image" src="https://github.com/user-attachments/assets/558b0151-dcc1-446d-914a-552531abd133" />
 
+`chmod777` is used to set the permission so that the file can be read, write, and executed, allowing the system to run it as a program, without this, you cannot execute the script with `./hello_world.sh`. The `#!/bin/bash` tells the system which interpreter to use to run the script. `/bin/bash` means use the Bash shell. Without it, the system may try to run the script with a different shell, causing errors.
 
+Now I will do a loop and conditional script, I will first create the script, make it executable and run it, the program will capture user input from 1 to 10 and validates it, if conditions are correct, it will show the system info, if a value outside of 1 to 10 is caputred, it will return an error. 
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/e090ef3c-2b7b-4a34-a786-2e2eb3375ead" />
 
+Testing the limits with number less than 0 and more than 10. 
+
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/ad19ff08-522d-4f2f-8c67-763af4526c91" />
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/8abb9ec5-c72b-4344-b712-0b93bd6c757f" />
+
+the `for` loop iterates over a list of values. In my script, `for i in 5 4 3 2 1` runs the loop 5 times, with `i` taking each value in order. The `sleep 1` pauses for 1 second between each loop. The script checks for number greater than 10 using `if [ $user_number -gt 10 ]`, prints an ERROR message, and skip the system info part. The valid input can be handled better using a `while` loop to keep asking the user for a number until a valid number is entered. 
+
+Now I will do a system monitoring script, which includes a number of cycles to run, at a set interval. 
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/3719d626-f6cd-4de7-bf71-294e20447807" />
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/c7c4ebe3-85eb-4f27-a376-fc82466bcc25" />
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/17c8c3d2-6d9d-4b02-b8a7-2b361c1ed33b" />
+
+The `free -h` shows system memory usage in human readable format, it displays total, used, free, shared, buff/cache, and available memory. I could add in commands like `netstat -i` to show network interface statistics or `ss -tulpn` to show listening ports, I could also add in `ping -c 4 google.com` to check connectivity and latency. Automations like this saves time, reduces human error and ensures tasks are performed consistently. Instead of manually typing the commands every hour to check, an admin can just schedule a script with `cron` to run automatically and alert them if there's any issues. This is critical for monitoring 24/7 for production servers. 
 
 # Lab 2b reflection. 
 Creating a web server using AWS EC2 is so different from running Ubuntu in my local VMware Workstation. The entire process from signing up for AWS to seeing the EC2 Apache default page from my own browser in my VMware feels like I was actually building part of the internet. The most challenging part was understanding network security. I initially forgot to open port 80 in the Security Group, so my browser timed out. After adding the HTTP rule, the page loaded successfully. Even though Ubuntu's UFW was later configured, the AWS firewall was the first line of defence. Using SSH with a key pair was another new experience. On my local VM, I just used a username and password. Here, I have to manage the .pem file and set correct permissions (chmod 400). This taught me the real-world practice of securing cloud servers, passwords are rarely used in production. Cost control was also something new to me. I set up a budget alert and made sure to stop the instance after completing the lab. This exercise made me appreciate why cloud engineers are so careful about resource lifecycle management. Overall, this lab made me understand how websites are actually hosted, how firewalls work at both the cloud and OS level, and why SSH key pairs are the industry standard for secure remote access. I feel more confident managing cloud resources and exploring other AWS services. 
 
+Bash scripting for system automation taught me that scripts can turn a series of long manual commands into a single executable file, saving both time and effort, and reducing errors. The `for` loop and `if-elif-else` conditions gave me control over how to script flows, I could add in count downs, validating user inputs, and display different outputs based on the conditions set. The resource monitor script showed how adminds can automate checks for memory, disk, and processes, which is essential for maintaining servers. I also learned about file permissions, without `chmod 777`, scripts wont be able to run. This experience has made me realise that automation is not just a convenience but a fundamental skill for any system admin. 
 
 ============================================================================================
 
-# Lab 3a. 
+# Lab 3a. DNS setup and SSL configuration. 
+
+In this lab, I will be using DuckDNS to register a domain name for my AWS EC2 Ubuntu server, configure apache, and securing my site with Let's Encrypt SSL/TLS certificate using Certbot. I already have an AWS EC2 instance running, apache 2 installed and working as well as a security group that allows SSH(port 22), HTTP(port 80), and HTTPS(port 443). 
+
+First I go to DuckDNS.org to get a free domain and name it hakuverse. 
+<img width="1347" height="1006" alt="image" src="https://github.com/user-attachments/assets/dae5748e-14c6-4b8f-ac39-55fd175c1d2b" />
+
+To create the DuckDNS IP update script on my EC2 instance, I ran my EC2 instance and SSH into my EC2 using my VMware Workstation. 
+<img width="1377" height="738" alt="image" src="https://github.com/user-attachments/assets/b10baf68-d21e-4340-af45-d59cd394bab3" />
+<img width="1402" height="212" alt="image" src="https://github.com/user-attachments/assets/37d34555-dcd1-495c-be7c-4a27dcf70d05" />
+
+I then create the update script and check if it runs properly
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/6df2b75d-9ff4-4729-a1b7-f0a8a37311d7" />
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/adc125c3-8fa8-45d6-b2d1-1d58ecc5f61a" />
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/1845156b-65d2-4cad-ab78-12e736e26410" />
+
+Now I will set up automatic IP updates with cron and verify DNS resolution
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/f4a7dd98-461f-411c-b9a3-23db0e2ec5a9" />
+
+Success showing my EC2 instance's public IP address `3.107.16.201` instead of `210.10.77.59`
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/c4447183-8d42-4764-83a6-879d644bbec5" />
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/a9a8b3c5-8109-46b9-b36c-b347da01a20a" />
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/61c22518-5676-4c40-ab05-10ffc7d11ce4" />
+
+Now I will install certbot, verify the installation, obtain SSL certificate with certbot and test HTTPS in browser. Currently only HTTP is allowed to access my `hakuverse.duckdns.org` because I do not have an SSL certificate installed for my port 443 (HTTPS), I will install certbot and try again after getting an SSL certificate. 
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/a0d12760-0f85-4d5f-a9fc-c20ec7e23c32" />
+
+I install certbot using `sudo apt install certbot python3-certbot-apache -y` and verify with `certbot --version`
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/5b1a313b-58a2-466b-be31-8cd9b3d9c9b1" />
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/8bcbe9b1-d915-45e6-ac0f-fe4502b7c0cb" />
+
+Now I will run Certbot in Apache mode and get my SSL certificate
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/cf4437a0-53d5-4565-9768-ca12b3c8cd21" />
+
+Time to test if it works on HTTPS now. (It works!) 
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/cfc23998-5427-4edf-b444-eeb93dfe4446" />
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/855fab04-2acc-499a-a4bb-5aad8121b06b" />
+
+Now I test for a dry run of certificate renewal since Let's Encrypt certificates are valid for only 90days, and I check the renewal timer.
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/70fb2a3f-5ca4-4478-9569-fc50b24ffc41" />
+
+Now it is time to stop my EC2 instance after finishing this lab to save money. It is very important to stop or terminate any EC2 instance when not using. 
+<img width="1426" height="237" alt="image" src="https://github.com/user-attachments/assets/28228724-2b9f-4ff3-b809-2486422b86ea" />
+<img width="697" height="108" alt="image" src="https://github.com/user-attachments/assets/76773db7-7914-4fc6-a50e-b713899f7e16" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

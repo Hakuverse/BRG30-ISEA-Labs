@@ -474,6 +474,49 @@ This lab showed me how system adminstrators automate repetitive tasks. I wrote a
 ============================================================================================
 
 # Lab 4. Additional Server Service (Docker) 
+I will deploy an additional server service using Docker. Docker is the industry standard for containerized application deployment which is used by companies like Netflix, Uber, and Spotify. I will install Docker on my EC2 instance, Run an Nginx web server container, customize the container with my own HTML page, connect Docker to my DuckDNS domain using a reverse proxy. 
+
+First I will need to start my AWS EC2 instance and access it thru my local VMware. 
+<img width="1397" height="663" alt="image" src="https://github.com/user-attachments/assets/d5f0f14f-c3cc-4c27-9691-97d7aacd1e3c" />
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/6e87384a-1253-4413-aa98-2faed095b5ab" />
+
+Then I'll update systen and install, start and enable Docker. I will also verify it and test out by using `sudo docker run hello-world`
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/591b3cc0-2012-4ebe-b053-04f4e9b953ef" />
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/7e9c011b-c8ef-43ab-9c9d-475b13ae695f" />
+
+Now I will allow non-root docker usage to avoid typing sudo everytime.
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/8180816d-ada7-46ab-9b93-aaefa4cc9639" />
+
+Now I will run my first container (Nginx web server) and verify if the contain is running.
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/73c2f197-a0fa-4e36-88a4-e771d3b8c7e8" />
+
+Then I test the Nginx container locally with curl and in browser using `http://32.236.177.46:8080` 
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/bb2ab80c-78d3-4f06-8119-3786a9c42bff" />
+I forgot to add in port 8080 in my AWS EC2 and it shows unable to connect, after setting my security group in AWS console and add in inbound rules to include port 8080 it is now successfully loaded. 
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/eb243311-e674-4a4c-9ed6-a5bdc5ba5d99" />
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/aebbb2b2-17dd-4b5e-b8fc-f1327b20eb9c" />
+
+Now i will customer the container with my own HTML page. 
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/ef6dcb5f-bbef-41d1-b89b-d53df1bb38e0" />
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/5209dec1-d4d3-4b4d-9abe-efde2beb5800" />
+
+I will try out the container management commands now 
+
+View container logs 
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/104df5a0-a12b-4bbd-b186-a287ef40b44e" />
+
+Stop the container, start it back, check container status 
+<img width="1524" height="1076" alt="image" src="https://github.com/user-attachments/assets/099fb18c-b025-41a0-b106-f089962b7cb7" />
+
+
+
+
+
+
+
+
+
+
 
 
 
